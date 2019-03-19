@@ -14,7 +14,8 @@ class ModuloController extends Controller
      */
     public function index()
     {
-        //
+        $qs= Modulo::all();
+        return $qs;
     }
 
     /**
@@ -35,7 +36,10 @@ class ModuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $modulo = new Modulo();
+        $modulo->modulo= $request['modulo'];
+        $modulo->save();
+        return $modulo;
     }
 
     /**
@@ -44,9 +48,10 @@ class ModuloController extends Controller
      * @param  \App\Modulo  $modulo
      * @return \Illuminate\Http\Response
      */
-    public function show(Modulo $modulo)
+    public function show(Modulo $modulo, $id)
     {
-        //
+        $RegistroEncontrado=Modulo::find($id);
+        return $RegistroEncontrado;
     }
 
     /**
@@ -57,7 +62,7 @@ class ModuloController extends Controller
      */
     public function edit(Modulo $modulo)
     {
-        //
+        return view('editarmodulo', ['modulo'=>$modulo]);
     }
 
     /**
@@ -69,7 +74,9 @@ class ModuloController extends Controller
      */
     public function update(Request $request, Modulo $modulo)
     {
-        //
+        $modulo->modulo= $request['modulo'];
+        $modulo->save();
+        return redirect('modulos/listmodulo');
     }
 
     /**
@@ -80,6 +87,14 @@ class ModuloController extends Controller
      */
     public function destroy(Modulo $modulo)
     {
-        //
+        $modulo->delete();
+        return redirect('modulos/listmodulo');
+    }
+
+
+    public function listmodulo()
+    {
+        $rs=$this->index();
+        return view('listmodulo',['rs'=>$rs]);
     }
 }

@@ -14,7 +14,8 @@ class CargoController extends Controller
      */
     public function index()
     {
-        //
+        $qs= Cargo::all();
+        return $qs;
     }
 
     /**
@@ -35,7 +36,10 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carg= new Cargo();
+        $carg->cargo= $request['cargo'];
+        $carg->save();
+        return $carg;
     }
 
     /**
@@ -46,7 +50,8 @@ class CargoController extends Controller
      */
     public function show(Cargo $cargo)
     {
-        //
+        $RegistroEncontrado=Cargo::find($id);
+        return $RegistroEncontrado;
     }
 
     /**
@@ -57,7 +62,7 @@ class CargoController extends Controller
      */
     public function edit(Cargo $cargo)
     {
-        //
+        return view('editarcargo', ['cargo'=>$cargo]);
     }
 
     /**
@@ -69,7 +74,9 @@ class CargoController extends Controller
      */
     public function update(Request $request, Cargo $cargo)
     {
-        //
+        $cargo->cargo=$request['cargo'];
+        $cargo->save();
+        return redirect('cargos/listcargo');
     }
 
     /**
@@ -80,6 +87,15 @@ class CargoController extends Controller
      */
     public function destroy(Cargo $cargo)
     {
-        //
+        $cargo->delete();
+        return redirect('cargos/listcargo');
+    }
+
+
+
+    public function listcargo()
+    {
+        $rs=$this->index();
+        return view('listcargo',['rs'=>$rs]);
     }
 }

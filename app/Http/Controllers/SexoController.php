@@ -14,7 +14,8 @@ class SexoController extends Controller
      */
     public function index()
     {
-        //
+        $qs= Sexo::all();
+        return $qs;
     }
 
     /**
@@ -35,7 +36,10 @@ class SexoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sexo = new Sexo();
+        $sexo->sexo= $request['sexo'];
+        $sexo->save();
+        return $sexo;
     }
 
     /**
@@ -46,7 +50,8 @@ class SexoController extends Controller
      */
     public function show(Sexo $sexo)
     {
-        //
+        $RegistroEncontrado=Sexo::find($id);
+        return $RegistroEncontrado;
     }
 
     /**
@@ -57,7 +62,7 @@ class SexoController extends Controller
      */
     public function edit(Sexo $sexo)
     {
-        //
+        return view('editarsexo', ['sexo'=>$sexo]);
     }
 
     /**
@@ -69,7 +74,9 @@ class SexoController extends Controller
      */
     public function update(Request $request, Sexo $sexo)
     {
-        //
+        $sexo->sexo= $request['sexo'];
+        $sexo->save();
+        return redirect('sexos/listsexo');
     }
 
     /**
@@ -80,6 +87,14 @@ class SexoController extends Controller
      */
     public function destroy(Sexo $sexo)
     {
-        //
+        $sexo->delete();
+        return redirect('sexos/listsexo');
+    }
+
+
+    public function listsexo()
+    {
+        $rs=$this->index();
+        return view('listsexo',['rs'=>$rs]);
     }
 }

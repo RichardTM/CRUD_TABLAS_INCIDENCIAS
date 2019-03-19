@@ -14,7 +14,8 @@ class IncidenciaController extends Controller
      */
     public function index()
     {
-        //
+        $qs= Incidencia::all();
+        return $qs;
     }
 
     /**
@@ -35,7 +36,14 @@ class IncidenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $incid = new Incidencia();
+        $incid->titulo= $request['titulo'];
+        $incid->descripcion= $request['descripcion'];
+        $incid->modulo_id= $request['modulo_id'];
+        $incid->tipo_incidencia_id= $request['tipo_incidencia_id'];
+        $incid->user_id= $request['user_id'];
+        $incid->save();
+        return $incid;
     }
 
     /**
@@ -46,7 +54,8 @@ class IncidenciaController extends Controller
      */
     public function show(Incidencia $incidencia)
     {
-        //
+        $registroEncontrado= Incidencia::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +66,7 @@ class IncidenciaController extends Controller
      */
     public function edit(Incidencia $incidencia)
     {
-        //
+        return view('editarincidencia', ['incidencia'=>$incidencia]);
     }
 
     /**
@@ -69,7 +78,13 @@ class IncidenciaController extends Controller
      */
     public function update(Request $request, Incidencia $incidencia)
     {
-        //
+        $incidencia->titulo=$request['titulo'];
+        $incidencia->descripcion=$request['descripcion'];
+        $incidencia->modulo_id=$request['modulo_id'];
+        $incidencia->tipo_incidencia_id=$request['tipo_incidencia_id'];
+        $incidencia->user_id=$request['user_id'];
+        $incidencia->save();
+        return redirect('incidencias/listincidencia');
     }
 
     /**
@@ -80,6 +95,15 @@ class IncidenciaController extends Controller
      */
     public function destroy(Incidencia $incidencia)
     {
-        //
+        $incidencia->delete();
+        return redirect('incidencias/listincidencia');
+    }
+
+
+
+    public function listincidencia()
+    {
+        $rs=$this->index();
+        return view('listincidencia',['rs'=>$rs]);
     }
 }

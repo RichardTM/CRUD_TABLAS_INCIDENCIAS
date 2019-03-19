@@ -14,7 +14,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        //
+        $qs= Perfil::all();
+        return $qs;
     }
 
     /**
@@ -35,7 +36,15 @@ class PerfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $model = new Perfil();
+        $model->nombres= $request['nombres'];
+        $model->apellidos= $request['apellidos'];
+        $model->sexo_id= $request['sexo_id'];
+        $model->cargo_id= $request['cargo_id'];
+        $model->entidad_id= $request['entidad_id'];
+        $model->user_id= $request['user_id'];
+        $model->save();
+        return $model;
     }
 
     /**
@@ -44,9 +53,10 @@ class PerfilController extends Controller
      * @param  \App\Perfil  $perfil
      * @return \Illuminate\Http\Response
      */
-    public function show(Perfil $perfil)
+    public function show(Perfil $perfil, $id)
     {
-        //
+        $registroEncontrado= Perfil::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +67,7 @@ class PerfilController extends Controller
      */
     public function edit(Perfil $perfil)
     {
-        //
+        return view('editarperfil', ['perfil'=>$perfil]);
     }
 
     /**
@@ -69,7 +79,14 @@ class PerfilController extends Controller
      */
     public function update(Request $request, Perfil $perfil)
     {
-        //
+        $perfil->nombres= $request['nombres'];
+        $perfil->apellidos= $request['apellidos'];
+        $perfil->sexo_id= $request['sexo_id'];
+        $perfil->cargo_id= $request['cargo_id'];
+        $perfil->entidad_id= $request['entidad_id'];
+        $perfil->user_id= $request['user_id'];
+        $perfil->save();
+        return redirect('perfiles/listperfil');
     }
 
     /**
@@ -80,6 +97,17 @@ class PerfilController extends Controller
      */
     public function destroy(Perfil $perfil)
     {
-        //
+        $perfil->delete();
+        return redirect('perfiles/listperfil');
+    }
+
+
+    public function listperfil()
+    {
+        $rs=$this->index();
+        return view('listperfil',['rs'=>$rs]);
     }
 }
+
+
+
