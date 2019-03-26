@@ -43,9 +43,7 @@ Auth::routes();
 route::get('perfiles/editarperfil/{perfil}', 'PerfilController@edit');
 //listar los datos
 route::get('perfiles/listperfil', 'PerfilController@listperfil');
-route::get('perfiles/welperfil', function(){
-    return view('welperfil');
-});
+route::get('perfiles/welperfil', 'PerfilController@create');
 route::get('perfiles', 'PerfilController@index'); // inicio
 route::get('perfiles/{id}', 'PerfilController@show'); //mostrar vista de datos
 route::post('perfiles', 'PerfilController@store'); //guardar datos
@@ -67,9 +65,7 @@ Auth::routes();
 route::get('incidencias/editarincidencia/{incidencia}', 'IncidenciaController@edit');
 //listar los datos
 route::get('incidencias/listincidencia', 'IncidenciaController@listincidencia');
-route::get('incidencias/crearincidencia', function(){
-    return view('crearincidencia');
-});
+route::get('incidencias/crearincidencia', 'IncidenciaController@create');
 route::get('incidencias', 'IncidenciaController@index'); // inicio
 route::get('incidencias/{id}', 'IncidenciaController@show'); //mostrar vista de datos
 route::post('incidencias', 'IncidenciaController@store'); //guardar datos

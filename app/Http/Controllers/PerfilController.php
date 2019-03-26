@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Perfil;
 use Illuminate\Http\Request;
+use App\Sexo;
+use App\Cargo;
+use App\Entidad;
+use App\User;
+
+
+
 
 class PerfilController extends Controller
 {
@@ -14,8 +21,14 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        $qs= Perfil::all();
-        return $qs;
+        return Perfil::with([
+            'sexo',
+            'cargo',
+            'entidad',
+            'name'
+        ])->get();
+
+
     }
 
     /**
@@ -25,7 +38,18 @@ class PerfilController extends Controller
      */
     public function create()
     {
-        //
+        // RELACION PARA SEXOS
+        $sexos=Sexo::all();
+
+        // RELACION PARA SEXOS
+        $cargos=Cargo::all();
+
+        //RELACION PARA ENTIDADES
+        $entidades=Entidad::all();
+
+        //RELACION PARA USERS
+        $users=User::all();
+        return view( 'welperfil', compact(  'sexos', 'cargos', 'entidades', 'users'));
     }
 
     /**
@@ -104,8 +128,21 @@ class PerfilController extends Controller
 
     public function listperfil()
     {
-        $rs=$this->index();
-        return view('listperfil',['rs'=>$rs]);
+       /* $rs=$this->index();
+        return view('listperfil',['rs'=>$rs]);*/
+
+        // RELACION PARA SEXOS
+        $sexos=Sexo::all();
+
+        // RELACION PARA SEXOS
+        $cargos=Cargo::all();
+
+        //RELACION PARA ENTIDADES
+        $entidades=Entidad::all();
+
+        //RELACION PARA USERS
+        $users=User::all();
+        return view( 'listperfil', compact(  'sexos', 'cargos', 'entidades', 'users'));
     }
 }
 

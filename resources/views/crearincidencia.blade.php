@@ -140,14 +140,26 @@
 <div class="form-group">
 
     <label for="">MODULO</label>
-    <input id="mod"name="modulo_id" type="text" class="form-control" id="modulo_id"  placeholder="Ingrese el Modulo">
+
+<select name="modulo_id" class="form-control" required="required">
+    <option value="">seleccione</option>
+    @foreach($modulos as $item)
+    <option value="{{$item->id}}">{{$item->modulo}}</option>
+    @endforeach
+</select>
 </div>
 
 
 <div class="form-group">
 
     <label for="">TIPO DE INCIDENCIA</label>
-    <input id="tipo" name="tipo_incidencia_id" type="text" class="form-control" id="tipo_incidencia_id"  placeholder="Ingrese el Cargo">
+
+<select name="tipo_incidencia_id" class="form-control" required="required">
+    <option value="">seleccione</option>
+    @foreach($tipoincidencias as $item)
+    <option value="{{$item->id}}">{{$item->tipo}}</option>
+    @endforeach
+</select>
 </div>
 
 
@@ -155,8 +167,12 @@
 <div class="form-group">
 
     <label for="">USER</label>
-    <input  id="user"name="user_id" type="text" class="form-control" id="user_id"  placeholder="Ingrese el User">
-</div>
+<select name="user_id" class="form-control" required="required">
+    <option value="">seleccione</option>
+    @foreach($users as $item)
+    <option value="{{$item->id}}">{{$item->name}}</option>
+    @endforeach
+</select></div>
 
 
 

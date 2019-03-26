@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Incidencia;
 use Illuminate\Http\Request;
+use App\Modulo;
+use App\TipoIncidencia;
+use App\User;
+
 
 class IncidenciaController extends Controller
 {
@@ -14,8 +18,12 @@ class IncidenciaController extends Controller
      */
     public function index()
     {
-        $qs= Incidencia::all();
-        return $qs;
+        return Incidencia::with([
+            'modulo',
+            'tipo',
+            'name'
+        ])->get();
+
     }
 
     /**
@@ -25,7 +33,17 @@ class IncidenciaController extends Controller
      */
     public function create()
     {
-        //
+           // RELACION PARA MODULOS
+           $modulos=Modulo::all();
+
+            // RELACION PARA TIPO INCIDENCIAS
+            $tipoincidencias=TipoIncidencia::all();
+
+            // RELACION PARA USER
+            $users=User::all();
+
+
+           return view( 'crearincidencia', compact(  'modulos', 'tipoincidencias', 'users'));
     }
 
     /**
