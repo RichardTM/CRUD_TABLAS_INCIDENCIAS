@@ -7,81 +7,62 @@
 
 
 
-@csrf()
+    @csrf()
 
-<h1>TABLA PERFILES</h1>
+    <h1>TABLA PERFILES</h1>
 
 
-<!--<button id="vol" type="submit" class="btn btn-primary"><a href="/">MENU PRINCIPAL</button>   -->
+    <!--<button id="vol" type="submit" class="btn btn-primary"><a href="/">MENU PRINCIPAL</button>   -->
 
-<legend>GUARDAR NUEVO PERFIL</legend>
-<!-- <hr class="linea">-->
- <div class="form-group">
+    <legend>GUARDAR NUEVO PERFIL</legend>
+    <!-- <hr class="linea">-->
+    <div class="form-group">
 
-    <label for="">NOMBRES</label>
-    <input  id="nom"name="nombres" type="text" class="form-control" id="nombres"  placeholder="Ingrese el Nombre">
-</div>
+        @component('componentes.text', ['name' => 'nombres', 'label' => 'NOMBRES', 'placeholder' =>'Ingrese el Nombre'])
+        @endcomponent
+    </div>
     <br>
 
-<div class="form-group">
+    <div class="form-group">
 
-    <label for="">APELLIDOS</label>
-    <input  id="ape" name="apellidos" type="text" class="form-control" id="apellidos"  placeholder="Ingrese el Apellido">
-</div>
-
-
-<div class="form-group">
-
-    <label for="">SEXO</label>
-
-<select name="sexo_id" class="form-control" required="required">
-    <option value="">seleccione</option>
-    @foreach($sexos as $item)
-    <option value="{{$item->id}}">{{$item->sexo}}</option>
-    @endforeach
-</select>
-</div>
-
-<div class="form-group">
-
-    <label for="">CARGO</label>
-<select name="cargo_id" class="form-control" required="required">
-    <option value="">seleccione</option>
-    @foreach($cargos as $item)
-    <option value="{{$item->id}}">{{$item->cargo}}</option>
-    @endforeach
-</select>
-</div>
+        @component('componentes.text', ['name' => 'apellidos', 'label' => 'APELLIDOS', 'placeholder' =>'Ingrese el Apellido'])
+        @endcomponent
+    </div>
 
 
-<div class="form-group">
+    <div class="form-group">
+        @component('componentes.select', ['name'=>'sexo_id', 'data' =>$sexos, 'tag'=> 'sexo', 'label'=>'SEXO' ])
+        @endcomponent
 
-    <label for="">ENTIDAD</label>
- <!--  <input  id="ent" name="entidad_id" type="text" class="form-control" id="entidad_id"  placeholder="Ingrese la Entidad">   -->
+    </div>
 
 
-<select name="entidad_id" class="form-control" required="required">
-    <option value="">seleccione</option>
-    @foreach($entidades as $item)
-    <option value="{{$item->id}}">{{$item->entidad}}</option>
-    @endforeach
-</select>
-</div>
+    <div class="form-group">
+
+        @component('componentes.select', ['name'=>'cargo_id', 'data' =>$cargos, 'tag'=> 'cargo', 'label'=>'CARGO' ])
+        @endcomponent
+    </div>
+
+
+    <div class="form-group">
+
+
+        @component('componentes.select', ['name'=>'entidad_id', 'data' =>$entidades, 'tag'=> 'entidad', 'label'=>'ENTIDAD' ])
+        @endcomponent
+
+
+    </div>
 
 
 
-<div class="form-group">
+    <div class="form-group">
 
-    <label for="">USER</label>
-<select name="user_id" class="form-control" required="required">
-    <option value="">seleccione</option>
-    @foreach($users as $item)
-    <option value="{{$item->id}}">{{$item->name}}</option>
-    @endforeach
-</select>
-</div>
+
+        @component('componentes.select', ['name'=>'user_id', 'data' =>$users, 'tag'=> 'name', 'label'=>'USUARIO' ])
+        @endcomponent
+    </div>
 
 
 
- <button type="submit" class="btn btn-primary">GUARDAR</button>
+    <button type="submit" class="btn btn-primary">GUARDAR</button>
 </form>

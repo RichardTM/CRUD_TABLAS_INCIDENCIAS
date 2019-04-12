@@ -11,6 +11,10 @@
 |
 */
 
+
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -188,7 +192,13 @@ route::get('tipo_incidencias/creartipo', function(){
     return view('creartipo');
  });
 route::get('tipo_incidencias', 'TipoIncidenciaController@index'); // inicio
-route::get('tipo_incidencias/{id}', 'TipoIncidenciaController@show'); //mostrar vista de datos
+   route::get('tipo_incidencias/{id}', 'TipoIncidenciaController@show'); //mostrar vista de datos
 route::post('tipo_incidencias', 'TipoIncidenciaController@store'); //guardar datos
 route::patch('tipo_incidencias/{tipoIncidencia}', 'TipoIncidenciaController@update'); //actualizar datos
 route::delete('tipo_incidencias/{tipoIncidencia}', 'TipoIncidenciaController@destroy'); //eliminar datos
+
+
+
+
+Route::resource('roles', 'RolesController'); // rutas de recursos de roles
+Route::resource('permisos', 'PermisosController'); //rutas de recursos de permisos

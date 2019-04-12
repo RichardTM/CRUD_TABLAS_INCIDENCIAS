@@ -20,8 +20,8 @@ class IncidenciaController extends Controller
     {
         return Incidencia::with([
             'modulo',
-            'tipo',
-            'name'
+            'tipo_incidencia',
+            'user'
         ])->get();
 
     }
@@ -61,7 +61,7 @@ class IncidenciaController extends Controller
         $incid->tipo_incidencia_id= $request['tipo_incidencia_id'];
         $incid->user_id= $request['user_id'];
         $incid->save();
-        return $incid;
+        return redirect('incidencias/listincidencia');
     }
 
     /**
@@ -84,7 +84,10 @@ class IncidenciaController extends Controller
      */
     public function edit(Incidencia $incidencia)
     {
-        return view('editarincidencia', ['incidencia'=>$incidencia]);
+
+
+
+        return view('editarincidencia',  ['incidencia'=>$incidencia]);
     }
 
     /**

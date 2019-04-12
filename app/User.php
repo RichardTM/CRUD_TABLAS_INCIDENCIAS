@@ -5,10 +5,14 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
+
 
     /**
      * The attributes that are mass assignable.
@@ -51,7 +55,7 @@ class User extends Authenticatable
     */
     public function perfiles()
     {
-        return $this->hasMany(Perfil::class); //en este caso no necesito escribir sexo_id, porque ya hay un campo asi
+        return $this->hasOne(Perfil::class); //en este caso no necesito escribir sexo_id, porque ya hay un campo asi
                                                 //en la tabla perfiles y tiene el prametro de sexo_id
     }
 
@@ -61,7 +65,7 @@ class User extends Authenticatable
     */
     public function incidencias()
     {
-        return $this->hasMany(Incidencia::class);
+        return $this->hasOne(Incidencia::class);
 
     }
 }

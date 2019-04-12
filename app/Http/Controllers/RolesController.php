@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Modulo;
 use Illuminate\Http\Request;
 
-class ModuloController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ModuloController extends Controller
      */
     public function index()
     {
-        $qs= Modulo::all();
-        return $qs;
+        //
     }
 
     /**
@@ -36,65 +34,51 @@ class ModuloController extends Controller
      */
     public function store(Request $request)
     {
-        $modulo = new Modulo();
-        $modulo->modulo= $request['modulo'];
-        $modulo->save();
-        return redirect('modulos/listmodulo');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Modulo  $modulo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Modulo $modulo, $id)
+    public function show($id)
     {
-        $RegistroEncontrado=Modulo::find($id);
-        return $RegistroEncontrado;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Modulo  $modulo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Modulo $modulo)
+    public function edit($id)
     {
-        return view('editarmodulo', ['modulo'=>$modulo]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Modulo  $modulo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Modulo $modulo)
+    public function update(Request $request, $id)
     {
-        $modulo->modulo= $request['modulo'];
-        $modulo->save();
-        return redirect('modulos/listmodulo');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Modulo  $modulo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Modulo $modulo)
+    public function destroy($id)
     {
-        $modulo->delete();
-        return redirect('modulos/listmodulo');
-    }
-
-
-    public function listmodulo()
-    {
-        $rs=$this->index();
-        return view('listmodulo',['rs'=>$rs]);
+        //
     }
 }

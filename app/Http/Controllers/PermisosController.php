@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Modulo;
 use Illuminate\Http\Request;
+use Spatie\Permission\Contracts\Role;
+use Spatie\Permission\Models\Permission;
+use Illuminate\View\View;
 
-class ModuloController extends Controller
+class PermisosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class ModuloController extends Controller
      */
     public function index()
     {
-        $qs= Modulo::all();
-        return $qs;
+        $rs=Permission::all();
+        return View('permisos.lista',compact('rs'));
     }
 
     /**
@@ -25,7 +27,7 @@ class ModuloController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create');
     }
 
     /**
@@ -36,65 +38,53 @@ class ModuloController extends Controller
      */
     public function store(Request $request)
     {
-        $modulo = new Modulo();
-        $modulo->modulo= $request['modulo'];
-        $modulo->save();
-        return redirect('modulos/listmodulo');
+        $data= $request->validate([
+            'name'=>'requered|'
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Modulo  $modulo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Modulo $modulo, $id)
+    public function show($id)
     {
-        $RegistroEncontrado=Modulo::find($id);
-        return $RegistroEncontrado;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Modulo  $modulo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Modulo $modulo)
+    public function edit($id)
     {
-        return view('editarmodulo', ['modulo'=>$modulo]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Modulo  $modulo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Modulo $modulo)
+    public function update(Request $request, $id)
     {
-        $modulo->modulo= $request['modulo'];
-        $modulo->save();
-        return redirect('modulos/listmodulo');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Modulo  $modulo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Modulo $modulo)
+    public function destroy($id)
     {
-        $modulo->delete();
-        return redirect('modulos/listmodulo');
-    }
-
-
-    public function listmodulo()
-    {
-        $rs=$this->index();
-        return view('listmodulo',['rs'=>$rs]);
+        //
     }
 }

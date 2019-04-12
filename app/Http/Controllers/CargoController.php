@@ -39,7 +39,7 @@ class CargoController extends Controller
         $carg= new Cargo();
         $carg->cargo= $request['cargo'];
         $carg->save();
-        return $carg;
+        return redirect('cargos/listcargo');
     }
 
     /**
@@ -48,7 +48,7 @@ class CargoController extends Controller
      * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function show(Cargo $cargo)
+    public function show(Cargo $cargo,$id)
     {
         $RegistroEncontrado=Cargo::find($id);
         return $RegistroEncontrado;

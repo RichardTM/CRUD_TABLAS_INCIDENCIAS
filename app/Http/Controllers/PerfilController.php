@@ -25,7 +25,7 @@ class PerfilController extends Controller
             'sexo',
             'cargo',
             'entidad',
-            'name'
+            'user'
         ])->get();
 
 
@@ -68,7 +68,7 @@ class PerfilController extends Controller
         $model->entidad_id= $request['entidad_id'];
         $model->user_id= $request['user_id'];
         $model->save();
-        return $model;
+        return redirect('perfiles/listperfil');
     }
 
     /**
@@ -81,6 +81,8 @@ class PerfilController extends Controller
     {
         $registroEncontrado= Perfil::find($id);
         return $registroEncontrado;
+
+
     }
 
     /**
@@ -128,21 +130,10 @@ class PerfilController extends Controller
 
     public function listperfil()
     {
-       /* $rs=$this->index();
-        return view('listperfil',['rs'=>$rs]);*/
+        $rs=$this->index();
+        return view('listperfil',['rs'=>$rs]);
 
-        // RELACION PARA SEXOS
-        $sexos=Sexo::all();
 
-        // RELACION PARA SEXOS
-        $cargos=Cargo::all();
-
-        //RELACION PARA ENTIDADES
-        $entidades=Entidad::all();
-
-        //RELACION PARA USERS
-        $users=User::all();
-        return view( 'listperfil', compact(  'sexos', 'cargos', 'entidades', 'users'));
     }
 }
 

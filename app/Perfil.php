@@ -34,7 +34,7 @@ class Perfil extends Model
         return $this->belongsTo(Cargo::class);
     }
 
-    public function name()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

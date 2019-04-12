@@ -186,10 +186,10 @@
 
 	  <td>{{$item->nombres}}</td>
       <td>{{$item->apellidos}}</td>
-      <td>{{$item->sexo_id}}</td>
-      <td>{{$item->cargo_id}}</td>
-      <td>{{$item->entidad_id}}</td>
-      <td>{{$item->user_id}}</td>
+         <td >{{$item->sexo->sexo}}</td>
+      <td>{{$item->cargo->cargo}}</td>
+      <td>{{$item->entidad->entidad}}</td>
+      <td>{{$item->user->name}}</td>
 
 
             <td>

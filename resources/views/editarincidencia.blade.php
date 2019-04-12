@@ -137,6 +137,7 @@
 
     <label for="">MODULO</label>
     <input id="mod" value="{{$incidencia->modulo_id}}" name="modulo_id" type="form-control" id="modulo_id" placeholder="Ingrese el Modulo">
+
 </div>
     <br>
 <div class="form-group">

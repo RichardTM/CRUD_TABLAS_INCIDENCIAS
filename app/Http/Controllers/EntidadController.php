@@ -42,7 +42,7 @@ class EntidadController extends Controller
         $entidad = new Entidad();
         $entidad->entidad= $request['entidad'];
         $entidad->save();
-        return $entidad;
+        return redirect('entidades/list');
     }
 
     /**

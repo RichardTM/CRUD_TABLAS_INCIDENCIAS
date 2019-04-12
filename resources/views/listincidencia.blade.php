@@ -176,9 +176,9 @@
 
 	  <td>{{$item->titulo}}</td>
       <td class="des">{{$item->descripcion}}</td>
-      <td>{{$item->modulo_id}}</td>
-      <td>{{$item->tipo_incidencia_id}}</td>
-      <td>{{$item->user_id}}</td>
+      <td>{{$item->modulo->modulo}}</td>
+      <td>{{$item->tipo_incidencia->tipo}}</td>
+      <td>{{$item->user->name}}</td>
 
 
             <td>

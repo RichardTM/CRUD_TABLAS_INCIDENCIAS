@@ -39,7 +39,7 @@ class TipoIncidenciaController extends Controller
         $tipoIncidencia = new TipoIncidencia();
         $tipoIncidencia->tipo= $request['tipo'];
         $tipoIncidencia->save();
-        return $tipoIncidencia;
+        return redirect('tipo_incidencias/listtipo');
     }
 
     /**

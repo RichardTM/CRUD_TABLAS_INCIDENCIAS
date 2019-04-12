@@ -18,7 +18,7 @@ class Incidencia extends Model
       /*
     RELACION UNA INCIDENCIA PERTENECE A UN TIPO DE INCIDENCIA
     */
-    public function tipo()
+    public function tipo_incidencia()
     {
         return $this->belongsTo(TipoIncidencia::class);
     }
@@ -27,7 +27,7 @@ class Incidencia extends Model
      /*
     RELACION UNA INCIDENCIA PERTENECE A UN USER
     */
-    public function name()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

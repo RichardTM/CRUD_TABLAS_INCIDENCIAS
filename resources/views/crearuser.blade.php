@@ -3,148 +3,151 @@
     ////////////////////----------------------------------\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 
 
-    <form action="/users" method="POST" role="form">
+<form action="/users" method="POST" role="form">
 
-<style>
-    h1{
-        font: bold 80px  Agency FB, sans-serif;
-    color:yellow;
-    text-shadow: 10px 5px 3px black;
-    padding: 15px 0px;
-    }
-    h1{
-        margin-left:420px;
-        margin-top:10px ;
-    }
+    <style>
+        h1 {
+            font: bold 80px Agency FB, sans-serif;
+            color: yellow;
+            text-shadow: 10px 5px 3px black;
+            padding: 15px 0px;
+        }
 
-    hr{
-    color: gray;
-    border:2px solid gray;
-    width: auto;
-    }
+        h1 {
+            margin-left: 420px;
+            margin-top: 10px;
+        }
 
-    hr{
-        margin-top:-40px;
-    }
+        hr {
+            color: gray;
+            border: 2px solid gray;
+            width: auto;
+        }
 
-    legend{
-    font: bold 25px Agency FB, sans-serif;
-    color: teal;
-    text-align: left;
+        hr {
+            margin-top: -40px;
+        }
 
-    padding: 20px 180px;
-    }
+        legend {
+            font: bold 25px Agency FB, sans-serif;
+            color: teal;
+            text-align: left;
 
-    label {
-    font:  bold 20px Agency FB, sans-serif;
-    margin-left:  40px;
+            padding: 20px 180px;
+        }
 
-
-    }
-    /* TITULO*/
-    #tit{
-        border: 2px solid gray;
-        width:24%;
-        height:30px;
-        margin-left:40px;
-        margin-top:50px;
-    }
-
-    /*DESCRIPCION*/
-    #des{
-        border: 2px solid gray;
-        width:24%;
-        height:30px;
-        margin-left:52px;
-        margin-top:20px;
-    }
-
-    /*MODULO*/
-    #mod{
-        border: 2px solid gray;
-        width:24%;
-        height:30px;
-        margin-left:15px;
-        margin-top:20px;
-    }
+        label {
+            font: bold 20px Agency FB, sans-serif;
+            margin-left: 40px;
 
 
-     /*TIPO INCIDENCIA*/
-     #tipo{
-        border: 2px solid gray;
-        width:21%;
-        height:30px;
-        margin-left:10px;
-        margin-top:20px;
-    }
+        }
 
-     /*USERS*/
-     #user{
-        border: 2px solid gray;
-        width:24%;
-        height:30px;
-        margin-left:65px;
-        margin-top:20px;
-    }
+        /* TITULO*/
+        #tit {
+            border: 2px solid gray;
+            width: 24%;
+            height: 30px;
+            margin-left: 40px;
+            margin-top: 50px;
+        }
 
-    button{
-        border-radius:  20px ;
-        background-color: black;
-        color: white;
-        width: 200px;
-        height: 40px;
-        margin-left: 290px;
-        text-align: center;
-        padding: 5px;
-        margin-top:30PX;
-    }
-    button:hover{
-        background-color: #434343;
-        color: yellow;
-    }
-    .linea {
-        color: black;
-        border:1px solid gray;
-        width: 600px;
-        margin-top:-10px;
-        margin-left:5px;
-    }
+        /*DESCRIPCION*/
+        #des {
+            border: 2px solid gray;
+            width: 24%;
+            height: 30px;
+            margin-left: 52px;
+            margin-top: 20px;
+        }
 
-</style>
+        /*MODULO*/
+        #mod {
+            border: 2px solid gray;
+            width: 24%;
+            height: 30px;
+            margin-left: 15px;
+            margin-top: 20px;
+        }
 
 
+        /*TIPO INCIDENCIA*/
+        #tipo {
+            border: 2px solid gray;
+            width: 21%;
+            height: 30px;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
 
+        /*USERS*/
+        #user {
+            border: 2px solid gray;
+            width: 24%;
+            height: 30px;
+            margin-left: 65px;
+            margin-top: 20px;
+        }
 
+        button {
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+            width: 200px;
+            height: 40px;
+            margin-left: 290px;
+            text-align: center;
+            padding: 5px;
+            margin-top: 30PX;
+        }
 
+        button:hover {
+            background-color: #434343;
+            color: yellow;
+        }
 
-@csrf()
-<h1>TABLA USERS</h1>
-<hr>
-
-<legend>GUARDAR NUEVO USER</legend>
-<hr class="linea">
- <div class="form-group">
-
-    <label for="">NOMBRES</label>
-    <input id="tit" name="name" type="text" class="form-control" id="name"  placeholder="Ingrese el Nombre">
-</div>
-
-
-<div class="form-group">
-
-    <label for="">CORREO</label>
-    <input id="des" name="email" type="text" class="form-control" id="email"  placeholder="Ingrese el Correo">
-</div>
-
-
-<div class="form-group">
-
-    <label for="">CONTRASEÑA</label>
-    <input id="mod"name="password" type="text" class="form-control" id="password"  placeholder="Ingrese la Contraseña">
-</div>
+        .linea {
+            color: black;
+            border: 1px solid gray;
+            width: 600px;
+            margin-top: -10px;
+            margin-left: 5px;
+        }
+    </style>
 
 
 
 
- <button type="submit" class="btn btn-primary">GUARDAR</button>
+
+
+    @csrf()
+    <h1>TABLA USERS</h1>
+    <hr>
+
+    <legend>GUARDAR NUEVO USER</legend>
+    <hr class="linea">
+    <div class="form-group">
+
+        @component('componentes.text', ['name' => 'name', 'label' => 'NOMBRES', 'placeholder' =>'Ingrese el Nombre'])
+        @endcomponent
+    </div>
+
+
+    <div class="form-group">
+
+        @component('componentes.text', ['name' => 'email', 'label' => 'CORREO', 'placeholder' =>'Ingrese el Correo'])
+        @endcomponent
+    </div>
+
+
+    <div class="form-group">
+
+        @component('componentes.text', ['name' => 'password', 'label' => 'CONTRASEÑA', 'placeholder' =>'Ingrese la Contraseña'])
+        @endcomponent
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary">GUARDAR</button>
 </form>

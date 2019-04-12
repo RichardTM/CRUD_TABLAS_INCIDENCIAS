@@ -39,7 +39,7 @@ class SexoController extends Controller
         $sexo = new Sexo();
         $sexo->sexo= $request['sexo'];
         $sexo->save();
-        return $sexo;
+        return redirect('sexos/listsexo');
     }
 
     /**
